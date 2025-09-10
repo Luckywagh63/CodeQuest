@@ -1,8 +1,11 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { getAuth } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 export default function CodeQuest() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const router = useRouter();
 
   useEffect(() => {
     const handleMouse = (e) => setMousePos({ x: e.clientX, y: e.clientY });
@@ -21,10 +24,16 @@ export default function CodeQuest() {
   };
 
   const navigateToContest = () => {
-    // In a real app, you would use Next.js router or similar
-    alert('Navigating to Contest page...');
-    // For demo purposes, you could replace this with:
-    // router.push('/contest');
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+      // ✅ Logged in → go to contest
+      router.push("/contest");
+    } else {
+      // ❌ Not logged in → go to login
+      router.push("/login");
+    }
   };
 
   return (
@@ -45,7 +54,6 @@ export default function CodeQuest() {
         <div className="absolute bottom-32 right-32 w-24 h-24 bg-[#395B64] rounded-full animate-pulse"></div>
         <div className="absolute top-1/2 right-20 w-16 h-16 border-2 border-[#E7F6F2] animate-bounce"></div>
       </div>
-
 
       {/* Hero Section */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-32 sm:pt-0">
@@ -88,14 +96,12 @@ export default function CodeQuest() {
                   <div className="absolute inset-0 bg-gradient-to-r from-[#E7F6F2] to-[#A5C9CA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
               </a>
-              <a href='/contest'>
               <button 
-               
+                onClick={navigateToContest}
                 className="px-8 py-4 bg-gradient-to-r from-[#395B64] to-[#2C3333] text-[#E7F6F2] font-bold rounded-xl border-2 border-[#A5C9CA] hover:bg-gradient-to-r hover:from-[#A5C9CA] hover:to-[#395B64] hover:text-[#2C3333] transition-all duration-300 cursor-pointer"
               >
                 Enter Contest
               </button>
-              </a>
               <button 
                 onClick={scrollToRounds}
                 className="px-8 py-4 border-2 border-[#A5C9CA] text-[#A5C9CA] font-bold rounded-xl hover:bg-[#A5C9CA] hover:text-[#2C3333] transition-all duration-300 cursor-pointer"
@@ -107,11 +113,9 @@ export default function CodeQuest() {
 
           {/* Right Visual */}
           <div className="relative">
-            {/* Main Coding Image */}
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-br from-[#A5C9CA]/30 to-[#395B64]/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
               <div className="relative bg-[#2C3333]/80 backdrop-blur-sm rounded-3xl p-8 border border-[#A5C9CA]/30 hover:border-[#A5C9CA]/60 transition-all duration-300">
-                {/* Code Editor Mockup */}
                 <div className="bg-[#395B64] rounded-xl p-6 font-mono text-sm">
                   <div className="flex items-center mb-4 space-x-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -135,12 +139,10 @@ export default function CodeQuest() {
               <div className="text-2xl">🏆</div>
               <div className="text-[#E7F6F2] font-bold text-sm">Winner</div>
             </div>
-
             <div className="absolute -bottom-8 -left-8 bg-[#395B64]/40 backdrop-blur-sm rounded-2xl p-4 border border-[#A5C9CA]/30 animate-bounce">
               <div className="text-2xl">💻</div>
               <div className="text-[#A5C9CA] font-bold text-sm">Code</div>
             </div>
-
             <div className="absolute top-1/2 -right-16 bg-[#E7F6F2]/10 backdrop-blur-sm rounded-2xl p-4 border border-[#A5C9CA]/30">
               <div className="text-2xl">⚡</div>
               <div className="text-[#E7F6F2] font-bold text-sm">Fast</div>
@@ -180,7 +182,6 @@ export default function CodeQuest() {
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#A5C9CA]/20 to-[#395B64]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               <div className="relative bg-[#2C3333]/80 backdrop-blur-sm rounded-3xl p-8 border border-[#A5C9CA]/30 hover:border-[#A5C9CA]/50 transition-all duration-300 hover:scale-105">
-                {/* Quiz Image Mockup */}
                 <div className="bg-[#395B64]/30 rounded-xl p-6 mb-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[#A5C9CA] font-mono">Question 15/45</span>
@@ -195,7 +196,6 @@ export default function CodeQuest() {
                     </div>
                   </div>
                 </div>
-                
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-[#E7F6F2]">Online MCQ Round</h3>
                   <div className="text-[#A5C9CA] space-y-2">
@@ -211,7 +211,6 @@ export default function CodeQuest() {
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#395B64]/20 to-[#A5C9CA]/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
               <div className="relative bg-[#2C3333]/80 backdrop-blur-sm rounded-3xl p-8 border border-[#A5C9CA]/30 hover:border-[#A5C9CA]/50 transition-all duration-300 hover:scale-105">
-                {/* Terminal Mockup */}
                 <div className="bg-[#395B64]/30 rounded-xl p-6 mb-6 font-mono">
                   <div className="flex items-center mb-4">
                     <div className="flex space-x-2">
@@ -229,7 +228,6 @@ export default function CodeQuest() {
                     <div className="text-green-400">All tests passed! 🎉</div>
                   </div>
                 </div>
-                
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-[#E7F6F2]">Coding Challenge</h3>
                   <div className="text-[#A5C9CA] space-y-2">
