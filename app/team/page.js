@@ -213,9 +213,11 @@ export default function TeamPage() {
                 The battlefield is ready. Be the first team to join the ultimate coding competition!
               </p>
               <div className="mt-8">
+            <a href="/dashboard">
                 <button className="px-8 py-3 bg-gradient-to-r from-[#A5C9CA] to-[#395B64] rounded-full text-[#2C3333] font-bold hover:scale-105 transition-transform duration-300 hover:shadow-lg hover:shadow-[#A5C9CA]/30">
                   Register Your Team
                 </button>
+            </a>
               </div>
             </div>
           )}
