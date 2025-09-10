@@ -20,6 +20,13 @@ export default function CodeQuest() {
     }
   };
 
+  const navigateToContest = () => {
+    // In a real app, you would use Next.js router or similar
+    alert('Navigating to Contest page...');
+    // For demo purposes, you could replace this with:
+    // router.push('/contest');
+  };
+
   return (
     <div className="min-h-screen bg-[#2C3333] text-[#E7F6F2] relative overflow-hidden">
       {/* Dynamic Background */}
@@ -38,6 +45,7 @@ export default function CodeQuest() {
         <div className="absolute bottom-32 right-32 w-24 h-24 bg-[#395B64] rounded-full animate-pulse"></div>
         <div className="absolute top-1/2 right-20 w-16 h-16 border-2 border-[#E7F6F2] animate-bounce"></div>
       </div>
+
 
       {/* Hero Section */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-32 sm:pt-0">
@@ -74,9 +82,18 @@ export default function CodeQuest() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-             <a href='/login'> <button className="group relative px-8 py-4 cursor-pointer bg-gradient-to-r from-[#A5C9CA] to-[#E7F6F2] text-[#2C3333] font-bold rounded-xl overflow-hidden hover:scale-105 transition-all duration-300">
-                <span className="relative z-10">Register Now</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#E7F6F2] to-[#A5C9CA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <a href='/login'>
+                <button className="group relative px-8 py-4 cursor-pointer bg-gradient-to-r from-[#A5C9CA] to-[#E7F6F2] text-[#2C3333] font-bold rounded-xl overflow-hidden hover:scale-105 transition-all duration-300">
+                  <span className="relative z-10">Register Now</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#E7F6F2] to-[#A5C9CA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+              </a>
+              <a href='/contest'>
+              <button 
+               
+                className="px-8 py-4 bg-gradient-to-r from-[#395B64] to-[#2C3333] text-[#E7F6F2] font-bold rounded-xl border-2 border-[#A5C9CA] hover:bg-gradient-to-r hover:from-[#A5C9CA] hover:to-[#395B64] hover:text-[#2C3333] transition-all duration-300 cursor-pointer"
+              >
+                Enter Contest
               </button>
               </a>
               <button 
