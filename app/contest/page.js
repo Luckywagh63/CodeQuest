@@ -170,7 +170,7 @@ export default function ContestPage() {
                     </div>
                   </div>
                   <button disabled className="w-full px-8 py-4 bg-gray-600 text-gray-400 font-bold rounded-xl cursor-not-allowed">
-                    Available Sept 15th
+                    Available Sept 17th
                   </button>
                 </div>
               )}
