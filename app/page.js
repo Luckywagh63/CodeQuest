@@ -80,11 +80,11 @@ export default function CodeQuest() {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-[#395B64]/30 backdrop-blur-sm rounded-xl p-4 border border-[#A5C9CA]/20">
                 <div className="text-2xl font-bold text-[#E7F6F2]">Round 1</div>
-                <div className="text-[#A5C9CA] text-sm">Sept 16 • MCQ</div>
+                <div className="text-[#A5C9CA] text-sm">Sept 17 • MCQ</div>
               </div>
               <div className="bg-[#395B64]/30 backdrop-blur-sm rounded-xl p-4 border border-[#A5C9CA]/20">
                 <div className="text-2xl font-bold text-[#E7F6F2]">Round 2</div>
-                <div className="text-[#A5C9CA] text-sm">Sept 17 • Coding</div>
+                <div className="text-[#A5C9CA] text-sm">Sept 19 • Coding</div>
               </div>
             </div>
 
@@ -199,7 +199,7 @@ export default function CodeQuest() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-[#E7F6F2]">Online MCQ Round</h3>
                   <div className="text-[#A5C9CA] space-y-2">
-                    <div>📅 September 16th, 2025</div>
+                    <div>📅 September 17th, 2025</div>
                     <div>⏱️ 45 Minutes • 45 Questions</div>
                     <div>🎯 Technical + Soft Skills</div>
                   </div>
@@ -231,7 +231,7 @@ export default function CodeQuest() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-[#E7F6F2]">Coding Challenge</h3>
                   <div className="text-[#A5C9CA] space-y-2">
-                    <div>📅 September 17th, 2025</div>
+                    <div>📅 September 19th, 2025</div>
                     <div>💻 Live Coding Platform</div>
                     <div>🧠 Algorithm Challenges</div>
                   </div>
