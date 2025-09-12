@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 export default function CodeQuest() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -13,25 +15,26 @@ export default function CodeQuest() {
     return () => window.removeEventListener('mousemove', handleMouse);
   }, []);
 
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
   const scrollToRounds = () => {
     const roundsSection = document.getElementById('competition-rounds');
     if (roundsSection) {
-      roundsSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+      roundsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
   const navigateToContest = () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
     if (user) {
-      // ✅ Logged in → go to contest
       router.push("/contest");
     } else {
-      // ❌ Not logged in → go to login
       router.push("/login");
     }
   };
@@ -47,13 +50,6 @@ export default function CodeQuest() {
           top: mousePos.y - 300,
         }}
       />
-      
-      {/* Geometric Patterns */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-32 h-32 border-2 border-[#A5C9CA] rotate-45 animate-spin"></div>
-        <div className="absolute bottom-32 right-32 w-24 h-24 bg-[#395B64] rounded-full animate-pulse"></div>
-        <div className="absolute top-1/2 right-20 w-16 h-16 border-2 border-[#E7F6F2] animate-bounce"></div>
-      </div>
 
       {/* Hero Section */}
       <div className="relative z-10 min-h-screen flex items-center justify-center px-6 pt-32 sm:pt-0">
@@ -76,32 +72,37 @@ export default function CodeQuest() {
               </p>
             </div>
 
-            {/* Event Details */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[#395B64]/30 backdrop-blur-sm rounded-xl p-4 border border-[#A5C9CA]/20">
-                <div className="text-2xl font-bold text-[#E7F6F2]">Round 1</div>
-                <div className="text-[#A5C9CA] text-sm">Sept 17 • MCQ</div>
-              </div>
-              <div className="bg-[#395B64]/30 backdrop-blur-sm rounded-xl p-4 border border-[#A5C9CA]/20">
-                <div className="text-2xl font-bold text-[#E7F6F2]">Round 2</div>
-                <div className="text-[#A5C9CA] text-sm">Sept 19 • Coding</div>
-              </div>
-            </div>
-
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href='/login'>
-                <button className="group relative px-8 py-4 cursor-pointer bg-gradient-to-r from-[#A5C9CA] to-[#E7F6F2] text-[#2C3333] font-bold rounded-xl overflow-hidden hover:scale-105 transition-all duration-300">
+              {loading ? (
+                <button className="px-8 py-4 bg-gray-600 text-white rounded-xl cursor-wait">
+                  Loading...
+                </button>
+              ) : user ? (
+                <button
+                  onClick={() => router.push("/dashboard")}
+                  className="group relative px-8 py-4 cursor-pointer bg-gradient-to-r from-[#A5C9CA] to-[#E7F6F2] text-[#2C3333] font-bold rounded-xl overflow-hidden hover:scale-105 transition-all duration-300"
+                >
+                  <span className="relative z-10">Dashboard</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#E7F6F2] to-[#A5C9CA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+              ) : (
+                <button
+                  onClick={() => router.push("/login")}
+                  className="group relative px-8 py-4 cursor-pointer bg-gradient-to-r from-[#A5C9CA] to-[#E7F6F2] text-[#2C3333] font-bold rounded-xl overflow-hidden hover:scale-105 transition-all duration-300"
+                >
                   <span className="relative z-10">Register Now</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#E7F6F2] to-[#A5C9CA] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
-              </a>
+              )}
+
               <button 
                 onClick={navigateToContest}
                 className="px-8 py-4 bg-gradient-to-r from-[#395B64] to-[#2C3333] text-[#E7F6F2] font-bold rounded-xl border-2 border-[#A5C9CA] hover:bg-gradient-to-r hover:from-[#A5C9CA] hover:to-[#395B64] hover:text-[#2C3333] transition-all duration-300 cursor-pointer"
               >
                 Enter Contest
               </button>
+
               <button 
                 onClick={scrollToRounds}
                 className="px-8 py-4 border-2 border-[#A5C9CA] text-[#A5C9CA] font-bold rounded-xl hover:bg-[#A5C9CA] hover:text-[#2C3333] transition-all duration-300 cursor-pointer"
@@ -199,7 +200,7 @@ export default function CodeQuest() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-[#E7F6F2]">Online MCQ Round</h3>
                   <div className="text-[#A5C9CA] space-y-2">
-                    <div>📅 September 17th, 2025</div>
+                    <div>📅 September 16th, 2025</div>
                     <div>⏱️ 45 Minutes • 45 Questions</div>
                     <div>🎯 Technical + Soft Skills</div>
                   </div>
@@ -231,7 +232,7 @@ export default function CodeQuest() {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-[#E7F6F2]">Coding Challenge</h3>
                   <div className="text-[#A5C9CA] space-y-2">
-                    <div>📅 September 19th, 2025</div>
+                    <div>📅 September 17th, 2025</div>
                     <div>💻 Live Coding Platform</div>
                     <div>🧠 Algorithm Challenges</div>
                   </div>
