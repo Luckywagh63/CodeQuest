@@ -28,7 +28,7 @@ export default function ContestPage() {
                 <h3 className="text-xl font-bold text-[#E7F6F2]">Important Notice</h3>
               </div>
               <p className="text-[#A5C9CA] text-lg">
-                Contest links will be uploaded here on <span className="text-[#E7F6F2] font-bold">September 15th, 2025</span>
+                Contest links will be uploaded here on <span className="text-[#E7F6F2] font-bold">September 17th, 2025</span>
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function ContestPage() {
                   <div className="space-y-4 mb-8">
                     <div className="flex items-center text-[#A5C9CA]">
                       <span className="text-2xl mr-3">📅</span>
-                      <span>September 16th, 2025 </span>
+                      <span>September 17th, 2025 </span>
                     </div>
                     <div className="flex items-center text-[#A5C9CA]">
                       <span className="text-2xl mr-3">⏱️</span>
@@ -149,7 +149,7 @@ export default function ContestPage() {
                     </div>
                   </div>
                   <button disabled className="w-full px-8 py-4 bg-gray-600 text-gray-400 font-bold rounded-xl cursor-not-allowed">
-                    Available Sept 15th
+                    Available Sept 17th
                   </button>
                 </div>
               ) : (
@@ -158,7 +158,7 @@ export default function ContestPage() {
                   <div className="space-y-4 mb-8">
                     <div className="flex items-center text-[#A5C9CA]">
                       <span className="text-2xl mr-3">📅</span>
-                      <span>September 17th, 2025 </span>
+                      <span>September 19th, 2025 </span>
                     </div>
                     <div className="flex items-center text-[#A5C9CA]">
                       <span className="text-2xl mr-3">⏱️</span>
@@ -170,7 +170,7 @@ export default function ContestPage() {
                     </div>
                   </div>
                   <button disabled className="w-full px-8 py-4 bg-gray-600 text-gray-400 font-bold rounded-xl cursor-not-allowed">
-                    Available Sept 17th
+                    Available Sept 19th
                   </button>
                 </div>
               )}
