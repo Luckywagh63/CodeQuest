@@ -80,12 +80,12 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="p-4 bg-[#395B64]/30 rounded-xl border border-[#A5C9CA]/20">
                 <div className="text-[#A5C9CA] text-sm font-medium mb-2">Round 1 - MCQ</div>
-                <div className="text-[#E7F6F2] font-bold">September 16, 2025</div>
+                <div className="text-[#E7F6F2] font-bold">September 17, 2025</div>
                 <div className="text-[#A5C9CA] text-sm">45 Questions • 45 Minutes</div>
               </div>
               <div className="p-4 bg-[#395B64]/30 rounded-xl border border-[#A5C9CA]/20">
                 <div className="text-[#A5C9CA] text-sm font-medium mb-2">Round 2 - Coding</div>
-                <div className="text-[#E7F6F2] font-bold">September 17, 2025</div>
+                <div className="text-[#E7F6F2] font-bold">September 19, 2025</div>
                 <div className="text-[#A5C9CA] text-sm">Programming Challenge</div>
               </div>
             </div>
