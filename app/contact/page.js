@@ -12,10 +12,10 @@ export default function CodeQuestContact() {
   }, []);
 
   const contacts = [
-    { role: "President", name: "Varad Patil", phone: "+91 00000 00000", icon: Crown },
-    { role: "President", name: "Ashlesha Patil", phone: "+91 00000 00000", icon: Crown },
-    { role: "Technical Secretary", name: "Lucky Wagh", phone: "+91 00000 00000", icon: Settings },
-    { role: "Technical Secretary", name: "Aayush Redij", phone: "+91 00000 00000", icon: Settings }
+    
+    { role: "President", name: "Ashlesha Patil", phone: "+91 99209 88514", icon: Crown },
+    { role: "Technical Secretary", name: "Lucky Wagh", phone: "+91 86522 90058", icon: Settings },
+    { role: "Technical Secretary", name: "Aayush Redij", phone: "+91 75071 23309", icon: Settings }
   ];
 
   return (
