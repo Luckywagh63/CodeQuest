@@ -6,6 +6,12 @@ export default function ContestPage() {
   const [activeRound, setActiveRound] = useState('round1');
   const router = useRouter();
 
+  // Add your MCQ link here
+  const handleMCQRedirect = () => {
+    // Replace 'YOUR_MCQ_LINK_HERE' with your actual MCQ link
+    window.open('YOUR_MCQ_LINK_HERE', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-[#2C3333] text-[#E7F6F2] relative overflow-hidden">
      
@@ -24,11 +30,11 @@ export default function ContestPage() {
             {/* Contest Link Notice */}
             <div className="bg-gradient-to-r from-[#395B64]/30 to-[#A5C9CA]/30 backdrop-blur-sm rounded-2xl p-6 border border-[#A5C9CA]/40 mb-8 max-w-2xl mx-auto">
               <div className="flex items-center justify-center mb-3">
-                <span className="text-3xl mr-3">📢</span>
-                <h3 className="text-xl font-bold text-[#E7F6F2]">Important Notice</h3>
+                <span className="text-3xl mr-3">🚀</span>
+                <h3 className="text-xl font-bold text-[#E7F6F2]">Contest Live!</h3>
               </div>
               <p className="text-[#A5C9CA] text-lg">
-                Contest links will be uploaded here on <span className="text-[#E7F6F2] font-bold">September 17th, 2025</span>
+                Contest links are now <span className="text-green-400 font-bold">ACTIVE</span> - Click below to participate!
               </p>
             </div>
           </div>
@@ -97,9 +103,6 @@ export default function ContestPage() {
             </div>
           </div>
 
-          {/* Contest Status */}
-        
-
           {/* Round Selection */}
           <div className="mb-12">
             <div className="flex justify-center">
@@ -148,9 +151,26 @@ export default function ContestPage() {
                       <span>Technical + Aptitude + Logic</span>
                     </div>
                   </div>
-                  <button disabled className="w-full px-8 py-4 bg-gray-600 text-gray-400 font-bold rounded-xl cursor-not-allowed">
-                    Available Sept 17th
+                  
+                  {/* Active MCQ Button */}
+                  <a href='https://codequest-vert.vercel.app/'>
+                  <button 
+                   
+                    className="w-full px-8 py-4 bg-gradient-to-r from-green-700 to-green-800 hover:from-green-600 hover:to-green-700 cursor-pointer text-white font-bold rounded-xl transform transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/25 flex items-center justify-center space-x-3 group"
+                  >
+                    <span className="text-xl">🚀</span>
+                    <span>Start MCQ Round</span>
+                    <div className="w-0 group-hover:w-6 overflow-hidden transition-all duration-300">
+                      <span className="text-xl">→</span>
+                    </div>
                   </button>
+                  </a>
+                  
+                  {/* Status indicator */}
+                  <div className="mt-4 flex items-center justify-center text-green-400">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
+                    <span className="text-sm font-semibold">LIVE NOW</span>
+                  </div>
                 </div>
               ) : (
                 <div className="bg-[#2C3333]/80 backdrop-blur-sm rounded-3xl p-8 border border-[#A5C9CA]/30">
