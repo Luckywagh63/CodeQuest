@@ -338,6 +338,8 @@ export default function Dashboard() {
               className="w-full px-4 py-3 rounded-xl bg-[#395B64]/50 border border-[#A5C9CA]/30 text-[#E7F6F2] focus:ring-2 focus:ring-[#A5C9CA] focus:border-transparent transition-all duration-200"
               required
             >
+
+              <option value="1st Year" className="bg-[#2C3333]">1st Year</option>
               <option value="2nd Year" className="bg-[#2C3333]">2nd Year</option>
               <option value="3rd Year" className="bg-[#2C3333]">3rd Year</option>
               <option value="4th Year" className="bg-[#2C3333]">4th Year</option>
